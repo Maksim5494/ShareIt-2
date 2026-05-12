@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping("{itemId}")
-    public ItemInfoDto getById(@RequestHeader("X-Sharer-User-Id") Long userId,
+    public ItemInfoDto getById(@RequestHeader(REQUEST_HEADER) Long userId,
                                @PathVariable Long itemId) {
         ItemInfoDto item = service.findItemById(userId, itemId);
         log.info("Получен HTTP-запрос по адресу /items/{itemId} (метод GET). "
@@ -61,7 +61,7 @@ public class ItemController {
     }
 
     @PostMapping("/{itemId}/comment")
-    public CommentDto addComment(@RequestHeader("X-Sharer-User-Id") Long userId,
+    public CommentDto addComment(@RequestHeader(REQUEST_HEADER) Long userId,
                                  @PathVariable Long itemId,
                                  @RequestBody CommentRequestDto commentRequestDto) {
         log.info("Получен HTTP-запрос по адресу /{itemId}/comment (метод POST). "
